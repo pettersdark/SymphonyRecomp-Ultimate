@@ -1,0 +1,402 @@
+diff --git a/RecompOne.Runtime/Gpu/Backends/Common/GlCore.cs b/RecompOne.Runtime/Gpu/Backends/Common/GlCore.cs
+index 90cbfd4..c8a2d01 100644
+--- a/RecompOne.Runtime/Gpu/Backends/Common/GlCore.cs
++++ b/RecompOne.Runtime/Gpu/Backends/Common/GlCore.cs
+@@ -40,13 +40,18 @@ public sealed class GlCore : IGpuBackend
+     bool _kTransparent;
+     int _kImage = -1;
+     int _kBlend, _kSetMask, _kCheckMask;
++    bool _kNeedsSplit;
++    bool _kSinglePassLight;
++    uint _glesNullDestTex;
++    int _perfFlushes, _perfReads, _perfSkippedReads, _perfSplits;
++    readonly System.Diagnostics.Stopwatch _perfClock = System.Diagnostics.Stopwatch.StartNew();
+     int _kTwAndX, _kTwAndY, _kTwOrX, _kTwOrY;
+     int _kClipX0, _kClipY0, _kClipX1, _kClipY1;
+     uint _kRepTex, _kRepClut;
+     float _kRepX, _kRepY, _kRepW, _kRepH;
+     int _kRepClutCount;
+     int _uTexWindow, _uBlend, _uBlendOpaque, _uSetMask, _uCheckMask, _uPosBias, _uFbInv;
+-    int _uRepRect, _uRepClutCount;
++    int _uRepRect, _uRepClutCount, _uGlesBlendPass;
+     int _uPresentOrigin, _uPresentSize, _uPresentTexSize, _uPresent24Origin, _uPresent24Size;
+ 
+     public bool Ready { get; private set; }
+@@ -87,6 +92,7 @@ public sealed class GlCore : IGpuBackend
+ 
+         _uTexWindow = _gl.GetUniformLocation(_progPrim, "uTexWindow");
+         _uBlend = _gl.GetUniformLocation(_progPrim, "uBlend");
++        _uGlesBlendPass = _gl.GetUniformLocation(_progPrim, "uGlesBlendPass");
+         _uBlendOpaque = _gl.GetUniformLocation(_progPrim, "uBlendOpaque");
+         _uSetMask = _gl.GetUniformLocation(_progPrim, "uSetMask");
+         _uCheckMask = _gl.GetUniformLocation(_progPrim, "uCheckMask");
+@@ -106,6 +112,18 @@ public sealed class GlCore : IGpuBackend
+         // GLSL ES 3.00 forbids uniform initializers, so uBlendOpaque is seeded from here
+         // instead of defaulting in the shader source.
+         _gl.Uniform4(_uBlendOpaque, 1f, 1f, 1f, 0f);
++#if ANDROID
++        // Safe sampler binding when mask checks do not need the destination.
++        // Never bind the active framebuffer texture as a dummy input.
++        _glesNullDestTex = _gl.GenTexture();
++        _gl.ActiveTexture(TextureUnit.Texture1);
++        _gl.BindTexture(TextureTarget.Texture2D, _glesNullDestTex);
++        _gl.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)GLEnum.Nearest);
++        _gl.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)GLEnum.Nearest);
++        _gl.TexImage2D<byte>(TextureTarget.Texture2D, 0, InternalFormat.Rgba8, 1, 1, 0,
++            PixelFormat.Rgba, PixelType.UnsignedByte, new byte[4]);
++        _gl.ActiveTexture(TextureUnit.Texture0);
++#endif
+ 
+         _uPresentOrigin = _gl.GetUniformLocation(_progPresent, "uOrigin");
+         _uPresentSize = _gl.GetUniformLocation(_progPresent, "uSize");
+@@ -283,14 +301,14 @@ public sealed class GlCore : IGpuBackend
+             }
+     }
+ 
+-    bool DesiredMatches(bool transparent, int blend, int image)
++    bool DesiredMatches(bool transparent, int blend, int image, bool needsSplit, bool singlePassLight)
+     {
+         int twAndX = ~(_env.TwMaskX * 8) & 0xFF, twAndY = ~(_env.TwMaskY * 8) & 0xFF;
+         int twOrX = (_env.TwOffX & _env.TwMaskX) * 8, twOrY = (_env.TwOffY & _env.TwMaskY) * 8;
+         return _kRepTex == _pendingRepTex && _kRepClut == _pendingRepClut
+             && (_pendingRepTex == 0 || (_kRepX == _pendingRepX && _kRepY == _pendingRepY
+                                         && _kRepW == _pendingRepW && _kRepH == _pendingRepH))
+-            && _kTransparent == transparent && _kBlend == blend && _kImage == image
++            && _kTransparent == transparent && _kBlend == blend && _kImage == image && _kNeedsSplit == needsSplit && _kSinglePassLight == singlePassLight
+             && _kSetMask == (_env.SetMask ? 1 : 0) && _kCheckMask == (_env.CheckMask ? 1 : 0)
+             && _kTwAndX == twAndX && _kTwAndY == twAndY && _kTwOrX == twOrX && _kTwOrY == twOrY
+             && _kClipX0 == _env.ClipX0 && _kClipY0 == _env.ClipY0 && _kClipX1 == _env.ClipX1 && _kClipY1 == _env.ClipY1;
+@@ -301,14 +319,28 @@ public sealed class GlCore : IGpuBackend
+         bool transparent = f.SemiTrans;
+         int blend = f.BlendMode;
+         int image = f.UseImage ? f.Image : -1;
++        // Additive modes can carry the destination factor in alpha and pre-scale
++        // the source RGB. With SetMask off this also preserves the native STP bit.
++        // Subtraction still needs ordered opaque/STP passes.
++        bool singlePassLight = !_legacy && transparent && (blend == 1 || blend == 3)
++            && f.Textured && !f.UseImage && !_env.SetMask;
++        bool needsSplit = !_legacy && transparent && blend != 0 && f.Textured && !f.UseImage && !singlePassLight;
+         var target = Classify();
+-        if (_count > 0 && (target != _kTarget || !DesiredMatches(transparent, blend, image))) Flush();
++        if (_count > 0 && (target != _kTarget || !DesiredMatches(transparent, blend, image, needsSplit, singlePassLight)
++#if ANDROID
++            // Non-average GLES blending uses separate opaque/STP passes. Preserve
++            // primitive order when their geometry overlaps within a batch.
++            || _kNeedsSplit
++#endif
++            )) Flush();
+         if (_count + vertsNeeded > MaxVerts) Flush();
+         CheckTextureFeedback(f);
+ 
+         _kTarget = target;
+         _kImage = image;
+         _kTransparent = transparent; _kBlend = blend;
++        _kNeedsSplit = needsSplit;
++        _kSinglePassLight = singlePassLight;
+         _kSetMask = _env.SetMask ? 1 : 0; _kCheckMask = _env.CheckMask ? 1 : 0;
+         _kTwAndX = ~(_env.TwMaskX * 8) & 0xFF; _kTwAndY = ~(_env.TwMaskY * 8) & 0xFF;
+         _kTwOrX = (_env.TwOffX & _env.TwMaskX) * 8; _kTwOrY = (_env.TwOffY & _env.TwMaskY) * 8;
+@@ -548,6 +580,7 @@ public sealed class GlCore : IGpuBackend
+     public void Flush()
+     {
+         if (_count == 0) return;
++        _perfFlushes++;
+ 
+         var rt = _kTarget;
+         uint destTex;
+@@ -605,7 +638,20 @@ public sealed class GlCore : IGpuBackend
+         int readY = Math.Max(0, ry0 * s);
+         int readW = Math.Max(0, (rx1 - rx0 + 1) * s);
+         int readH = Math.Max(0, (ry1 - ry0 + 1) * s);
+-        destTex = _vram.BeginDestRead(destTex, destW, destH, readX, readY, readW, readH);
++#if ANDROID
++        if (!_legacy && _kCheckMask == 0)
++        {
++            // Modern GLES uses fixed-function blending. Only mask checks sample
++            // uDest; copying every batch here otherwise adds needless mobile blits.
++            destTex = _glesNullDestTex;
++            _perfSkippedReads++;
++        }
++        else
++#endif
++        {
++            destTex = _vram.BeginDestRead(destTex, destW, destH, readX, readY, readW, readH);
++            _perfReads++;
++        }
+         RebindTarget(rt);
+ 
+         _gl.UseProgram(_progPrim);
+@@ -676,7 +722,27 @@ public sealed class GlCore : IGpuBackend
+         {
+             _gl.Enable(EnableCap.Blend);
+ #if ANDROID
+-            if (_kBlend == 1)
++            SetBlend(_kBlend switch { 0 => 0.5f, 3 => 0.25f, _ => 1f }, _kBlend == 0 ? 0.5f : 1f);
++            // Untextured geometry and RGBA images have no mixed PS1 STP texels.
++            // Their additive/subtractive draws can stay batched in one pass.
++            bool split = _kNeedsSplit;
++            if (split)
++            {
++                _perfSplits++;
++                _gl.Uniform1(_uGlesBlendPass, 1);
++                _gl.Disable(EnableCap.Blend);
++                _gl.DrawArrays(PrimitiveType.Triangles, 0, (uint)_count);
++                _gl.Uniform1(_uGlesBlendPass, 2);
++                _gl.Enable(EnableCap.Blend);
++            }
++            if (_kSinglePassLight)
++            {
++                _gl.Uniform1(_uGlesBlendPass, 3);
++                _gl.BlendFuncSeparate(BlendingFactor.One, BlendingFactor.SrcAlpha,
++                    BlendingFactor.One, BlendingFactor.Zero);
++                _gl.BlendEquation(BlendEquationModeEXT.FuncAdd);
++            }
++            else if (_kBlend == 1)
+             {
+                 _gl.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.One);
+                 _gl.BlendEquation(BlendEquationModeEXT.FuncAdd);
+@@ -686,13 +752,18 @@ public sealed class GlCore : IGpuBackend
+                 _gl.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.One);
+                 _gl.BlendEquation(BlendEquationModeEXT.FuncReverseSubtract);
+             }
++            else if (_kBlend == 3)
++            {
++                _gl.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.One);
++                _gl.BlendEquation(BlendEquationModeEXT.FuncAdd);
++            }
+             else
+             {
+                 _gl.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
+                 _gl.BlendEquation(BlendEquationModeEXT.FuncAdd);
+             }
+-            SetBlend(_kBlend switch { 0 => 0.5f, 3 => 0.25f, _ => 1f }, _kBlend == 0 ? 0.5f : 1f);
+             _gl.DrawArrays(PrimitiveType.Triangles, 0, (uint)_count);
++            if (split || _kSinglePassLight) _gl.Uniform1(_uGlesBlendPass, 0);
+ #else
+             _gl.BlendFuncSeparate(BlendingFactor.Src1Color, BlendingFactor.Src1Alpha, BlendingFactor.One, BlendingFactor.Zero);
+             if (_kBlend == 2)
+@@ -796,7 +867,9 @@ public sealed class GlCore : IGpuBackend
+         if (rgb24) src = null;
+ 
+         int w1x = src != null ? w + src.Margin * 2 : w;
+-        int h1x = h;
++        int cropTop = !rgb24 && src != null && h == 240 ? Math.Clamp(GpuHle.PresentCropTop, 0, h - 1) : 0;
++        int cropBottom = !rgb24 && src != null && h == 240 ? Math.Clamp(GpuHle.PresentCropBottom, 0, h - cropTop - 1) : 0;
++        int h1x = h - cropTop - cropBottom;
+         float aspect = src is { Margin: > 0 } ? GpuHle.WideAspect : src != null ? GpuHle.SourceAspect : GpuHle.OutputAspect;
+ 
+ 
+@@ -831,8 +904,8 @@ public sealed class GlCore : IGpuBackend
+         }
+         else if (src != null)
+         {
+-            _gl.Uniform2(_uPresentOrigin, 0f, 0f);
+-            _gl.Uniform2(_uPresentSize, (float)src.Wide1x, src.H);
++            _gl.Uniform2(_uPresentOrigin, 0f, (float)cropTop);
++            _gl.Uniform2(_uPresentSize, (float)src.Wide1x, src.H - cropTop - cropBottom);
+             _gl.Uniform2(_uPresentTexSize, (float)src.Wide1x, src.H);
+         }
+         else
+@@ -846,6 +919,13 @@ public sealed class GlCore : IGpuBackend
+         _gl.BindBuffer(BufferTargetARB.ArrayBuffer, 0);
+ 
+         uint outTex = ApplyPostFx(_presentTex, fbW, fbH);
++        if (_frame % 120 == 0)
++        {
++            if (Runtime.View.GetBool("PerformanceDiagnostics", false))
++                Console.WriteLine($"[GPU perf] scale={GlVram.Scale}; fps={120 / _perfClock.Elapsed.TotalSeconds:F1}; batches/frame={_perfFlushes / 120f:F1}; destinationCopies/frame={_perfReads / 120f:F1}; avoidedCopies/frame={_perfSkippedReads / 120f:F1}; splitBatches/frame={_perfSplits / 120f:F1}");
++            _perfFlushes = _perfReads = _perfSkippedReads = _perfSplits = 0;
++            _perfClock.Restart();
++        }
+ 
+         _gl.BindFramebuffer(FramebufferTarget.Framebuffer, 0);
+         return (outTex, fbW, fbH, aspect, 1f);
+@@ -982,6 +1062,7 @@ public sealed class GlCore : IGpuBackend
+         if (_progPresent != 0) _gl.DeleteProgram(_progPresent);
+         if (_progPresent24 != 0) _gl.DeleteProgram(_progPresent24);
+         if (_presentTex != 0) _gl.DeleteTexture(_presentTex);
++        if (_glesNullDestTex != 0) _gl.DeleteTexture(_glesNullDestTex);
+         if (_presentFbo != 0) _gl.DeleteFramebuffer(_presentFbo);
+         if (_postProg != 0) _gl.DeleteProgram(_postProg);
+         if (_postTex != 0) _gl.DeleteTexture(_postTex);
+diff --git a/RecompOne.Runtime/Gpu/Backends/Common/GlShaders.cs b/RecompOne.Runtime/Gpu/Backends/Common/GlShaders.cs
+index 3bc0c8f..4d7bd45 100644
+--- a/RecompOne.Runtime/Gpu/Backends/Common/GlShaders.cs
++++ b/RecompOne.Runtime/Gpu/Backends/Common/GlShaders.cs
+@@ -555,8 +555,14 @@ internal static class GlShaders
+             // made the pixel invisible - that is why candles, chandeliers and other
+             // breakables did not show up until they broke and their debris was drawn on the
+             // opaque path.
++            // Non-STP texels remain opaque even in additive/subtractive draws.
++            // GLES cannot encode separate source/destination factors per pixel;
++            // split these draws into opaque and STP passes, selected by dst factor.
++            if (src.Contains("uniform vec4  uBlend;"))
++                src = src.Replace("uniform vec4  uBlend;", "uniform int uGlesBlendPass;\nuniform vec4  uBlend;");
+             src = System.Text.RegularExpressions.Regex.Replace(
+-                src, @"BlendColor\s*=\s*([^;]+);", "FragColor.a = ($1).r;");
++                src, @"BlendColor\s*=\s*([^;]+);",
++                "{ vec4 glesBlend = ($1); if (uGlesBlendPass == 3) { FragColor.rgb *= glesBlend.r; FragColor.a = glesBlend.a; } else { if (uGlesBlendPass == 1 && glesBlend.a > 0.0) discard; if (uGlesBlendPass == 2 && glesBlend.a == 0.0) discard; FragColor.a = glesBlend.r; } }");
+         }
+         else if (src.Contains("#version 300 es") && !src.Contains("precision highp float;"))
+         {
+diff --git a/RecompOne.Runtime/Gpu/Hle/GpuHle.cs b/RecompOne.Runtime/Gpu/Hle/GpuHle.cs
+index 82682b0..5c0e678 100644
+--- a/RecompOne.Runtime/Gpu/Hle/GpuHle.cs
++++ b/RecompOne.Runtime/Gpu/Hle/GpuHle.cs
+@@ -9,6 +9,9 @@ public static class GpuHle
+     public static float OutputAspect { get; set; } = 4f / 3f;
+ 
+     public static float SourceAspect { get; set; } = 4f / 3f;
++    // Optional native scanline crop, controlled by the game adapter. Menus/FMV reset it.
++    public static int PresentCropTop { get; set; }
++    public static int PresentCropBottom { get; set; }
+     public static int LastDisplayW { get; set; }
+     public static int LastDisplayH { get; set; }
+     public static float TargetAspect { get; set; } = 4f / 3f;
+diff --git a/RecompOne.Runtime/Hardware/Controller.cs b/RecompOne.Runtime/Hardware/Controller.cs
+index dbe6c57..3f251e1 100644
+--- a/RecompOne.Runtime/Hardware/Controller.cs
++++ b/RecompOne.Runtime/Hardware/Controller.cs
+@@ -20,6 +20,9 @@ public static class Controller
+     public const ushort Square = 1 << 15;
+ 
+     public static ushort State = 0xFFFF;
++    // Short, game-thread driven menu navigation. Kept separate from touch holds.
++    public static volatile bool MenuOwnsInput;
++    public static volatile ushort MenuInput = 0xFFFF;
+     public static byte   RightX = 0x80;
+     public static byte   RightY = 0x80;
+     public static byte   LeftX = 0x80;
+diff --git a/RecompOne.Runtime/Host/Audio.cs b/RecompOne.Runtime/Host/Audio.cs
+index 107cd61..b79d390 100644
+--- a/RecompOne.Runtime/Host/Audio.cs
++++ b/RecompOne.Runtime/Host/Audio.cs
+@@ -59,7 +59,8 @@ public static unsafe class Audio
+ 
+             _track = builder.Build();
+ 
+-            _track.Play();
++            // The activity may have moved to the background during cold boot.
++            if (!_isPaused) _track.Play();
+ 
+             _running = true;
+             _mixerThread = new Thread(MixerLoop)
+diff --git a/RecompOne.Runtime/Host/InputManager.cs b/RecompOne.Runtime/Host/InputManager.cs
+index 2761af3..599517f 100644
+--- a/RecompOne.Runtime/Host/InputManager.cs
++++ b/RecompOne.Runtime/Host/InputManager.cs
+@@ -129,7 +129,8 @@ internal static unsafe class InputManager
+         var kb = _keyboard;
+         if (kb != null) s &= KeyState(kb, ConfigManager.Game.Keys);
+ 
+-        Controller.State = (ushort)(s & Controller.ConsumeExternalState());
++        ushort touch = Controller.ConsumeExternalState();
++        Controller.State = Controller.MenuOwnsInput ? Controller.MenuInput : (ushort)(s & touch);
+ 
+         // A real stick wins over the overlay's virtual one; when no pad is attached
+         // leave the axes alone so the on-screen joystick keeps working.
+diff --git a/RecompOne.Runtime/Host/Window/HostWindow.cs b/RecompOne.Runtime/Host/Window/HostWindow.cs
+index 2b549e4..8d97038 100644
+--- a/RecompOne.Runtime/Host/Window/HostWindow.cs
++++ b/RecompOne.Runtime/Host/Window/HostWindow.cs
+@@ -13,6 +13,8 @@ namespace RecompOne.Runtime.Host;
+ 
+ public static class HostWindow
+ {
++    // Set by the Android host before startup; changes apply on the next launch.
++    public static int? AndroidRenderScaleOverride;
+     static IView? _window;
+     static GL? _gl;
+     static ImGuiController? _imgui;
+@@ -389,7 +391,7 @@ public static class HostWindow
+         _vramTex= CreateTexture(_gl);
+         _ramTex = CreateTexture(_gl);
+ 
+-        Hle.GlVram.Scale = ConfigManager.View.RenderScale;
++        Hle.GlVram.Scale = Math.Clamp(AndroidRenderScaleOverride ?? ConfigManager.View.RenderScale, 1, 8);
+         _glBackend = (Hle.GlCore)Hle.GpuBackendFactory.Create(_gl,
+             Hle.GpuBackendFactory.Parse(ConfigManager.View.GpuBackend));
+         _glBackend.InitGl();
+@@ -483,6 +485,12 @@ public static class HostWindow
+     }
+ 
+     public static AspectRatioMode CurrentAspectRatio = AspectRatioMode.AutoDevice;
++    // Applied during final presentation, independently of the internal render scale.
++    public static volatile float ScanlineStrength;
++    public sealed record GameViewport(int X, int Y, int Width, int Height, int ScreenWidth, int ScreenHeight);
++    static GameViewport? _gameViewport;
++    public static GameViewport? CurrentGameViewport => System.Threading.Volatile.Read(ref _gameViewport);
++    public static event Action? GameViewportChanged;
+     public static volatile bool PendingGpuBackendReset = true;
+ 
+     public static void RequestGpuReset()
+@@ -492,6 +500,7 @@ public static class HostWindow
+ 
+     static uint _directVao, _directVbo, _directProg;
+     static int _uDirectTex;
++    static int _uDirectScanlineStrength, _uDirectScanlineRows;
+ 
+     static float _directUMax = 1.0f;
+ 
+@@ -528,15 +537,23 @@ public static class HostWindow
+                 precision highp int;
+                 in vec2 vUv;
+                 uniform sampler2D uTex;
++                uniform float uScanlineStrength;
++                uniform float uScanlineRows;
+                 out vec4 FragColor;
+                 void main() {
+-                    FragColor = texture(uTex, vUv);
++                    vec4 color = texture(uTex, vUv);
++                    float phase = fract(vUv.y * uScanlineRows);
++                    float line = 1.0 - smoothstep(0.15, 0.35, phase);
++                    color.rgb *= 1.0 - uScanlineStrength * line;
++                    FragColor = color;
+                 }
+                 """;
+             _directProg = Hle.GlShaders.Build(gl, vs, fs, "direct_present");
+             if (_directProg != 0)
+             {
+                 _uDirectTex = gl.GetUniformLocation(_directProg, "uTex");
++                _uDirectScanlineStrength = gl.GetUniformLocation(_directProg, "uScanlineStrength");
++                _uDirectScanlineRows = gl.GetUniformLocation(_directProg, "uScanlineRows");
+                 _directVao = gl.GenVertexArray();
+                 gl.BindVertexArray(_directVao);
+                 _directVbo = gl.GenBuffer();
+@@ -608,6 +625,15 @@ public static class HostWindow
+             vy = (screenH - vh) / 2;
+         }
+ 
++        var previousViewport = CurrentGameViewport;
++        if (previousViewport == null || previousViewport.X != vx || previousViewport.Y != vy ||
++            previousViewport.Width != vw || previousViewport.Height != vh ||
++            previousViewport.ScreenWidth != screenW || previousViewport.ScreenHeight != screenH)
++        {
++            System.Threading.Volatile.Write(ref _gameViewport, new GameViewport(vx, vy, vw, vh, screenW, screenH));
++            GameViewportChanged?.Invoke();
++        }
++
+         gl.BindFramebuffer(FramebufferTarget.Framebuffer, 0);
+         gl.Viewport(0, 0, (uint)screenW, (uint)screenH);
+         gl.ClearColor(0f, 0f, 0f, 1f);
+@@ -625,6 +651,11 @@ public static class HostWindow
+         gl.ActiveTexture(TextureUnit.Texture0);
+         gl.BindTexture(TextureTarget.Texture2D, tex);
+         gl.Uniform1(_uDirectTex, 0);
++        float rows = Hle.GpuHle.LastDisplayH > 0 ? Hle.GpuHle.LastDisplayH : 240;
++        // Fade out below 2x vertical size to avoid aliasing or uniformly darkening small views.
++        float visibility = Math.Clamp(vh / rows - 1f, 0f, 1f);
++        gl.Uniform1(_uDirectScanlineStrength, Math.Clamp(ScanlineStrength, 0f, 1f) * visibility);
++        gl.Uniform1(_uDirectScanlineRows, rows);
+         gl.DrawArrays(PrimitiveType.TriangleStrip, 0, 4);
+ 
+         gl.BindVertexArray(0);
+@@ -643,7 +674,7 @@ public static class HostWindow
+             PendingGpuBackendReset = false;
+             try
+             {
+-                Hle.GlVram.Scale = ConfigManager.View.RenderScale;
++                Hle.GlVram.Scale = Math.Clamp(AndroidRenderScaleOverride ?? ConfigManager.View.RenderScale, 1, 8);
+                 _glBackend?.Dispose();
+                 _glBackend = (Hle.GlCore)Hle.GpuBackendFactory.Create(gl,
+                     Hle.GpuBackendFactory.Parse(ConfigManager.View.GpuBackend));
