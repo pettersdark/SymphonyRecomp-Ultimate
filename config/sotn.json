@@ -1,0 +1,3711 @@
+{
+  "game": {
+    "id": "SLUS-00067",
+    "name": "SoTN",
+    "output": "../generated"
+  },
+  "cue": "../disc/ultimate.cue",
+  "funcMap": "funcmaps/main.json",
+  "debug": false,
+  "addressComments": true,
+  "disasmComments": false,
+  "functions": [],
+  "overlays": [
+    {
+      "name": "dra",
+      "file": "DRA.BIN",
+      "funcMap": "funcmaps/dra.json",
+      "base": "0x800A0000",
+      "linearSweep": true
+    },
+    {
+      "name": "ric",
+      "file": "BIN/RIC.BIN",
+      "funcMap": "funcmaps/ric.json",
+      "base": "0x8013C000",
+      "linearSweep": true
+    },
+    {
+      "name": "cen",
+      "file": "ST/CEN/CEN.BIN",
+      "funcMap": "funcmaps/stcen.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "chi",
+      "file": "ST/CHI/CHI.BIN",
+      "funcMap": "funcmaps/stchi.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "dai",
+      "file": "ST/DAI/DAI.BIN",
+      "funcMap": "funcmaps/stdai.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "wrp",
+      "file": "ST/WRP/WRP.BIN",
+      "funcMap": "funcmaps/stwrp.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "top",
+      "file": "ST/TOP/TOP.BIN",
+      "funcMap": "funcmaps/sttop.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "cat",
+      "file": "ST/CAT/CAT.BIN",
+      "funcMap": "funcmaps/stcat.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "nz0",
+      "file": "ST/NZ0/NZ0.BIN",
+      "funcMap": "funcmaps/stnz0.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "nz1",
+      "file": "ST/NZ1/NZ1.BIN",
+      "funcMap": "funcmaps/stnz1.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "np3",
+      "file": "ST/NP3/NP3.BIN",
+      "funcMap": "funcmaps/stnp3.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "lib",
+      "file": "ST/LIB/LIB.BIN",
+      "funcMap": "funcmaps/stlib.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "mad",
+      "file": "ST/MAD/MAD.BIN",
+      "funcMap": "funcmaps/stmad.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "are",
+      "file": "ST/ARE/ARE.BIN",
+      "funcMap": "funcmaps/stare.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "dre",
+      "file": "ST/DRE/DRE.BIN",
+      "funcMap": "funcmaps/stdre.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "rare",
+      "file": "ST/RARE/RARE.BIN",
+      "funcMap": "funcmaps/strare.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "rcat",
+      "file": "ST/RCAT/RCAT.BIN",
+      "funcMap": "funcmaps/strcat.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "rwrp",
+      "file": "ST/RWRP/RWRP.BIN",
+      "funcMap": "funcmaps/strwrp.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "rtop",
+      "file": "ST/RTOP/RTOP.BIN",
+      "funcMap": "funcmaps/strtop.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "sel",
+      "file": "ST/SEL/SEL.BIN",
+      "funcMap": "funcmaps/stsel.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "bo4",
+      "file": "BOSS/BO4/BO4.BIN",
+      "funcMap": "funcmaps/bobo4.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "bo6",
+      "file": "BOSS/BO6/BO6.BIN",
+      "funcMap": "funcmaps/bobo6.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "mar",
+      "file": "BOSS/MAR/MAR.BIN",
+      "funcMap": "funcmaps/bomar.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "rbo0",
+      "file": "BOSS/RBO0/RBO0.BIN",
+      "funcMap": "funcmaps/borbo0.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "rbo3",
+      "file": "BOSS/RBO3/RBO3.BIN",
+      "funcMap": "funcmaps/borbo3.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "rbo5",
+      "file": "BOSS/RBO5/RBO5.BIN",
+      "funcMap": "funcmaps/borbo5.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "st0",
+      "file": "ST/ST0/ST0.BIN",
+      "funcMap": "funcmaps/stst0.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "no0",
+      "file": "ST/NO0/NO0.BIN",
+      "funcMap": "funcmaps/stno0.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "no1",
+      "file": "ST/NO1/NO1.BIN",
+      "funcMap": "funcmaps/stno1.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "no2",
+      "file": "ST/NO2/NO2.BIN",
+      "funcMap": "funcmaps/stno2.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "no3",
+      "file": "ST/NO3/NO3.BIN",
+      "funcMap": "funcmaps/stno3.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "no4",
+      "file": "ST/NO4/NO4.BIN",
+      "funcMap": "funcmaps/stno4.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "rnz0",
+      "file": "ST/RNZ0/RNZ0.BIN",
+      "funcMap": "funcmaps/strnz0.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "rcen",
+      "file": "ST/RCEN/RCEN.BIN",
+      "funcMap": "funcmaps/rcen.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "rchi",
+      "file": "ST/RCHI/RCHI.BIN",
+      "funcMap": "funcmaps/rchi.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "rdai",
+      "file": "ST/RDAI/RDAI.BIN",
+      "funcMap": "funcmaps/rdai.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "rlib",
+      "file": "ST/RLIB/RLIB.BIN",
+      "funcMap": "funcmaps/rlib.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "rno0",
+      "file": "ST/RNO0/RNO0.BIN",
+      "funcMap": "funcmaps/rno0.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "rno1",
+      "file": "ST/RNO1/RNO1.BIN",
+      "funcMap": "funcmaps/rno1.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "rno2",
+      "file": "ST/RNO2/RNO2.BIN",
+      "funcMap": "funcmaps/rno2.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "rno3",
+      "file": "ST/RNO3/RNO3.BIN",
+      "funcMap": "funcmaps/rno3.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "rno4",
+      "file": "ST/RNO4/RNO4.BIN",
+      "funcMap": "funcmaps/rno4.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "rnz1",
+      "file": "ST/RNZ1/RNZ1.BIN",
+      "funcMap": "funcmaps/rnz1.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "te1",
+      "file": "ST/TE1/TE1.BIN",
+      "funcMap": "funcmaps/te1.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "te2",
+      "file": "ST/TE2/TE2.BIN",
+      "funcMap": "funcmaps/te2.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "te3",
+      "file": "ST/TE3/TE3.BIN",
+      "funcMap": "funcmaps/te3.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "te4",
+      "file": "ST/TE4/TE4.BIN",
+      "funcMap": "funcmaps/te4.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "te5",
+      "file": "ST/TE5/TE5.BIN",
+      "funcMap": "funcmaps/te5.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "bo0",
+      "file": "BOSS/BO0/BO0.BIN",
+      "funcMap": "funcmaps/bo0.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "bo1",
+      "file": "BOSS/BO1/BO1.BIN",
+      "funcMap": "funcmaps/bo1.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "bo2",
+      "file": "BOSS/BO2/BO2.BIN",
+      "funcMap": "funcmaps/bo2.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "bo3",
+      "file": "BOSS/BO3/BO3.BIN",
+      "funcMap": "funcmaps/bo3.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "bo5",
+      "file": "BOSS/BO5/BO5.BIN",
+      "funcMap": "funcmaps/bo5.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "bo7",
+      "file": "BOSS/BO7/BO7.BIN",
+      "funcMap": "funcmaps/bo7.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "rbo1",
+      "file": "BOSS/RBO1/RBO1.BIN",
+      "funcMap": "funcmaps/rbo1.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "rbo2",
+      "file": "BOSS/RBO2/RBO2.BIN",
+      "funcMap": "funcmaps/rbo2.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "rbo4",
+      "file": "BOSS/RBO4/RBO4.BIN",
+      "funcMap": "funcmaps/rbo4.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "rbo6",
+      "file": "BOSS/RBO6/RBO6.BIN",
+      "funcMap": "funcmaps/rbo6.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "rbo7",
+      "file": "BOSS/RBO7/RBO7.BIN",
+      "funcMap": "funcmaps/rbo7.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "rbo8",
+      "file": "BOSS/RBO8/RBO8.BIN",
+      "funcMap": "funcmaps/rbo8.json",
+      "base": "0x80180000",
+      "linearSweep": true
+    },
+    {
+      "name": "tt_000",
+      "file": "SERVANT/TT_000.BIN",
+      "funcMap": "funcmaps/tt_000.json",
+      "base": "0x80170000",
+      "linearSweep": true
+    },
+    {
+      "name": "tt_001",
+      "file": "SERVANT/TT_001.BIN",
+      "funcMap": "funcmaps/tt_001.json",
+      "base": "0x80170000",
+      "linearSweep": true
+    },
+    {
+      "name": "tt_002",
+      "file": "SERVANT/TT_002.BIN",
+      "funcMap": "funcmaps/tt_002.json",
+      "base": "0x80170000",
+      "linearSweep": true
+    },
+    {
+      "name": "tt_003",
+      "file": "SERVANT/TT_003.BIN",
+      "funcMap": "funcmaps/tt_003.json",
+      "base": "0x80170000",
+      "linearSweep": true
+    },
+    {
+      "name": "tt_004",
+      "file": "SERVANT/TT_004.BIN",
+      "funcMap": "funcmaps/tt_004.json",
+      "base": "0x80170000",
+      "linearSweep": true
+    },
+    {
+      "name": "tt_005",
+      "file": "SERVANT/TT_005.BIN",
+      "funcMap": "funcmaps/tt_005.json",
+      "base": "0x80170000",
+      "linearSweep": true
+    },
+    {
+      "name": "tt_006",
+      "file": "SERVANT/TT_006.BIN",
+      "funcMap": "funcmaps/tt_006.json",
+      "base": "0x80170000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_000",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 0,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_000.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_001",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 28672,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_001.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_002",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 57344,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_002.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_003",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 86016,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_003.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_004",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 114688,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_004.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_005",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 143360,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_005.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_006",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 172032,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_006.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_007",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 200704,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_007.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_008",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 229376,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_008.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_009",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 258048,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_009.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_010",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 286720,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_010.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_011",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 315392,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_011.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_012",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 344064,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_012.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_013",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 372736,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_013.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_014",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 401408,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_014.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_015",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 430080,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_015.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_016",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 458752,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_016.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_017",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 487424,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_017.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_018",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 516096,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_018.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_019",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 544768,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_019.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_020",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 573440,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_020.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_021",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 602112,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_021.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_022",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 630784,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_022.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_023",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 659456,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_023.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_024",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 688128,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_024.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_025",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 716800,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_025.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_026",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 745472,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_026.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_027",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 774144,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_027.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_028",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 802816,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_028.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_029",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 831488,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_029.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_030",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 860160,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_030.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_031",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 888832,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_031.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_032",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 917504,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_032.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_033",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 946176,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_033.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_034",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 974848,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_034.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_035",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 1003520,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_035.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_036",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 1032192,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_036.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_037",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 1060864,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_037.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_038",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 1089536,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_038.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_039",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 1118208,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_039.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_040",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 1146880,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_040.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_041",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 1175552,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_041.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_042",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 1204224,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_042.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_043",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 1232896,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_043.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_044",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 1261568,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_044.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_045",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 1290240,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_045.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_046",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 1318912,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_046.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_047",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 1347584,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_047.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_048",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 1376256,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_048.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_049",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 1404928,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_049.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_050",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 1433600,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_050.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_051",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 1462272,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_051.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_052",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 1490944,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_052.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_053",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 1519616,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_053.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_054",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 1548288,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_054.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_055",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 1576960,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_055.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_056",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 1605632,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_056.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_057",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 1634304,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_057.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w0_058",
+      "file": "BIN/WEAPON0.BIN",
+      "offset": 1662976,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_058.json",
+      "base": "0x8017A000",
+      "linearSweep": true
+    },
+    {
+      "name": "w1_000",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 0,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_000.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_001",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 28672,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_001.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_002",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 57344,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_002.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_003",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 86016,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_003.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_004",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 114688,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_004.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_005",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 143360,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_005.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_006",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 172032,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_006.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_007",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 200704,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_007.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_008",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 229376,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_008.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_009",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 258048,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_009.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_010",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 286720,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_010.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_011",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 315392,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_011.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_012",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 344064,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_012.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_013",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 372736,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_013.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_014",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 401408,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_014.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_015",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 430080,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_015.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_016",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 458752,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_016.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_017",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 487424,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_017.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_018",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 516096,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_018.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_019",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 544768,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_019.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_020",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 573440,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_020.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_021",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 602112,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_021.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_022",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 630784,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_022.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_023",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 659456,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_023.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_024",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 688128,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_024.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_025",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 716800,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_025.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_026",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 745472,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_026.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_027",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 774144,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_027.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_028",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 802816,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_028.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_029",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 831488,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_029.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_030",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 860160,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_030.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_031",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 888832,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_031.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_032",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 917504,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_032.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_033",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 946176,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_033.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_034",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 974848,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_034.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_035",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 1003520,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_035.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_036",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 1032192,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_036.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_037",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 1060864,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_037.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_038",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 1089536,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_038.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_039",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 1118208,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_039.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_040",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 1146880,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_040.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_041",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 1175552,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_041.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_042",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 1204224,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_042.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_043",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 1232896,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_043.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_044",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 1261568,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_044.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_045",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 1290240,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_045.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_046",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 1318912,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_046.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_047",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 1347584,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_047.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_048",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 1376256,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_048.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_049",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 1404928,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_049.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_050",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 1433600,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_050.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_051",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 1462272,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_051.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_052",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 1490944,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_052.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_053",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 1519616,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_053.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_054",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 1548288,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_054.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_055",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 1576960,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_055.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_056",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 1605632,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_056.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_057",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 1634304,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_057.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "w1_058",
+      "file": "BIN/WEAPON1.BIN",
+      "offset": 1662976,
+      "skip": 16384,
+      "size": 12288,
+      "funcMap": "funcmaps/w0_058.json",
+      "base": "0x8017A000",
+      "rebase": 12288,
+      "linearSweep": true
+    },
+    {
+      "name": "maria_saturn",
+      "file": "BIN/MARIA.BIN",
+      "base": "0x8013C000",
+      "linearSweep": true,
+      "functions": [
+        {
+          "address": "0x80161DA8"
+        },
+        {
+          "address": "0x801628D0"
+        },
+        {
+          "address": "0x80168670"
+        },
+        {
+          "address": "0x80169D64"
+        },
+        {
+          "address": "0x8016A098"
+        },
+        {
+          "address": "0x8016A270"
+        },
+        {
+          "address": "0x8016B134"
+        },
+        {
+          "address": "0x8016B380"
+        },
+        {
+          "address": "0x8016B478"
+        },
+        {
+          "address": "0x8016B570"
+        },
+        {
+          "address": "0x8016B704"
+        },
+        {
+          "address": "0x8016B8BC"
+        },
+        {
+          "address": "0x8016BB74"
+        },
+        {
+          "address": "0x8016BDB8"
+        },
+        {
+          "address": "0x8016BF04"
+        },
+        {
+          "address": "0x8016D50C"
+        },
+        {
+          "address": "0x8016D7F8"
+        },
+        {
+          "address": "0x8016DC30"
+        },
+        {
+          "address": "0x8016DFE0"
+        },
+        {
+          "address": "0x8016E140"
+        },
+        {
+          "address": "0x8016E438"
+        },
+        {
+          "address": "0x8016EB0C"
+        },
+        {
+          "address": "0x8016EBEC"
+        },
+        {
+          "address": "0x8016F12C"
+        },
+        {
+          "address": "0x8016FB80"
+        },
+        {
+          "address": "0x8016FCC0"
+        },
+        {
+          "address": "0x8016FE3C"
+        },
+        {
+          "address": "0x80170248"
+        },
+        {
+          "address": "0x8017061C"
+        },
+        {
+          "address": "0x80170AEC"
+        },
+        {
+          "address": "0x80170BE0"
+        },
+        {
+          "address": "0x80170D00"
+        },
+        {
+          "address": "0x80170D20"
+        },
+        {
+          "address": "0x80170DDC"
+        },
+        {
+          "address": "0x80171294"
+        },
+        {
+          "address": "0x80171A44"
+        },
+        {
+          "address": "0x80171D10"
+        },
+        {
+          "address": "0x80171E08"
+        },
+        {
+          "address": "0x80172258"
+        },
+        {
+          "address": "0x80172278"
+        },
+        {
+          "address": "0x80172298"
+        },
+        {
+          "address": "0x801722B8"
+        },
+        {
+          "address": "0x801722C0"
+        },
+        {
+          "address": "0x8017233C"
+        },
+        {
+          "address": "0x801735E4"
+        },
+        {
+          "address": "0x80173888"
+        },
+        {
+          "address": "0x801738A8"
+        },
+        {
+          "address": "0x80174160"
+        },
+        {
+          "address": "0x80174B10"
+        },
+        {
+          "address": "0x80175234"
+        },
+        {
+          "address": "0x80175254"
+        },
+        {
+          "address": "0x80175274"
+        },
+        {
+          "address": "0x80175294"
+        },
+        {
+          "address": "0x8017529C"
+        },
+        {
+          "address": "0x801752A4"
+        },
+        {
+          "address": "0x801752AC"
+        },
+        {
+          "address": "0x80175700"
+        },
+        {
+          "address": "0x80175944"
+        },
+        {
+          "address": "0x80175E70"
+        },
+        {
+          "address": "0x801764C4"
+        },
+        {
+          "address": "0x801764E4"
+        },
+        {
+          "address": "0x80176504"
+        },
+        {
+          "address": "0x80176A10"
+        },
+        {
+          "address": "0x80176B74"
+        },
+        {
+          "address": "0x80176D04"
+        },
+        {
+          "address": "0x8017706C"
+        },
+        {
+          "address": "0x801777C4"
+        },
+        {
+          "address": "0x801777E4"
+        },
+        {
+          "address": "0x801780C4"
+        },
+        {
+          "address": "0x80178904"
+        },
+        {
+          "address": "0x80178E8C"
+        },
+        {
+          "address": "0x801793CC"
+        },
+        {
+          "address": "0x80179A80"
+        },
+        {
+          "address": "0x80179AA0"
+        },
+        {
+          "address": "0x80179AC0"
+        },
+        {
+          "address": "0x80179AE0"
+        },
+        {
+          "address": "0x80179B00"
+        },
+        {
+          "address": "0x80179B20"
+        },
+        {
+          "address": "0x80179B40"
+        },
+        {
+          "address": "0x80179B60"
+        },
+        {
+          "address": "0x80179B80"
+        },
+        {
+          "address": "0x8017A0D8"
+        },
+        {
+          "address": "0x8017A0F8"
+        },
+        {
+          "address": "0x8017A118"
+        },
+        {
+          "address": "0x8017A394"
+        },
+        {
+          "address": "0x8017A9DC"
+        },
+        {
+          "address": "0x8017B094"
+        },
+        {
+          "address": "0x8017B41C"
+        },
+        {
+          "address": "0x8017C560"
+        },
+        {
+          "address": "0x8017C778"
+        },
+        {
+          "address": "0x8017CD04"
+        }
+      ]
+    },
+    {
+      "name": "maria_psp",
+      "file": "BIN/MARIA2.BIN",
+      "base": "0x8013C000",
+      "linearSweep": true,
+      "functions": [
+        {
+          "address": "0x8015DA3C"
+        },
+        {
+          "address": "0x8015DC3C"
+        },
+        {
+          "address": "0x8015E850"
+        },
+        {
+          "address": "0x8015E96C"
+        },
+        {
+          "address": "0x8015E990"
+        },
+        {
+          "address": "0x8015EE84"
+        },
+        {
+          "address": "0x8015F088"
+        },
+        {
+          "address": "0x8015F2F8"
+        },
+        {
+          "address": "0x8015F7B8"
+        },
+        {
+          "address": "0x8016012C"
+        },
+        {
+          "address": "0x80160A48"
+        },
+        {
+          "address": "0x80160E4C"
+        },
+        {
+          "address": "0x8016176C"
+        },
+        {
+          "address": "0x80161E54"
+        },
+        {
+          "address": "0x801626F4"
+        },
+        {
+          "address": "0x80163120"
+        },
+        {
+          "address": "0x80163360"
+        },
+        {
+          "address": "0x80163368"
+        },
+        {
+          "address": "0x80163874"
+        },
+        {
+          "address": "0x801639C8"
+        },
+        {
+          "address": "0x80164F44"
+        },
+        {
+          "address": "0x8016501C"
+        },
+        {
+          "address": "0x801650F0"
+        },
+        {
+          "address": "0x80165254"
+        },
+        {
+          "address": "0x80165698"
+        },
+        {
+          "address": "0x801663E0"
+        },
+        {
+          "address": "0x8016C9C0"
+        },
+        {
+          "address": "0x8016CD04"
+        },
+        {
+          "address": "0x8016CE94"
+        },
+        {
+          "address": "0x8016D3F0"
+        },
+        {
+          "address": "0x8016D720"
+        },
+        {
+          "address": "0x8016D8D4"
+        },
+        {
+          "address": "0x8016DB54"
+        },
+        {
+          "address": "0x8016E214"
+        },
+        {
+          "address": "0x8016E778"
+        },
+        {
+          "address": "0x8016E9E4"
+        },
+        {
+          "address": "0x8016EC8C"
+        },
+        {
+          "address": "0x8016F5A8"
+        },
+        {
+          "address": "0x8016F738"
+        },
+        {
+          "address": "0x8016FAFC"
+        }
+      ]
+    },
+    {
+      "name": "richter_saturn",
+      "file": "BIN/RIC2.BIN",
+      "base": "0x8013C000",
+      "linearSweep": true,
+      "functions": [
+        {
+          "address": "0x80156F40"
+        },
+        {
+          "address": "0x80157BFC"
+        },
+        {
+          "address": "0x8015E7B4"
+        },
+        {
+          "address": "0x8015FEA8"
+        },
+        {
+          "address": "0x801601DC"
+        },
+        {
+          "address": "0x801603B4"
+        },
+        {
+          "address": "0x801603C4"
+        },
+        {
+          "address": "0x80160788"
+        },
+        {
+          "address": "0x80160C38"
+        },
+        {
+          "address": "0x80160D2C"
+        },
+        {
+          "address": "0x80160E4C"
+        },
+        {
+          "address": "0x80160F0C"
+        },
+        {
+          "address": "0x80160FC4"
+        },
+        {
+          "address": "0x8016147C"
+        },
+        {
+          "address": "0x80161C2C"
+        },
+        {
+          "address": "0x80161EF8"
+        },
+        {
+          "address": "0x80161FF0"
+        },
+        {
+          "address": "0x801623E0"
+        },
+        {
+          "address": "0x80162604"
+        },
+        {
+          "address": "0x80162870"
+        },
+        {
+          "address": "0x80162C7C"
+        },
+        {
+          "address": "0x80162C84"
+        },
+        {
+          "address": "0x80162EF8"
+        },
+        {
+          "address": "0x801641A0"
+        },
+        {
+          "address": "0x80164444"
+        },
+        {
+          "address": "0x80164DF8"
+        },
+        {
+          "address": "0x801656B0"
+        },
+        {
+          "address": "0x80166060"
+        },
+        {
+          "address": "0x80166784"
+        },
+        {
+          "address": "0x801677AC"
+        },
+        {
+          "address": "0x80167974"
+        },
+        {
+          "address": "0x80167A68"
+        },
+        {
+          "address": "0x80167A70"
+        },
+        {
+          "address": "0x80167A78"
+        },
+        {
+          "address": "0x80167A80"
+        },
+        {
+          "address": "0x80167ED4"
+        },
+        {
+          "address": "0x801684E8"
+        },
+        {
+          "address": "0x80168A30"
+        },
+        {
+          "address": "0x8016903C"
+        },
+        {
+          "address": "0x80169480"
+        },
+        {
+          "address": "0x80169714"
+        },
+        {
+          "address": "0x80169C20"
+        },
+        {
+          "address": "0x80169D84"
+        },
+        {
+          "address": "0x80169F14"
+        },
+        {
+          "address": "0x8016A27C"
+        },
+        {
+          "address": "0x8016A984"
+        },
+        {
+          "address": "0x8016B0D0"
+        },
+        {
+          "address": "0x8016B98C"
+        },
+        {
+          "address": "0x8016C1CC"
+        },
+        {
+          "address": "0x8016C744"
+        },
+        {
+          "address": "0x8016CC84"
+        },
+        {
+          "address": "0x8016D338"
+        },
+        {
+          "address": "0x8016D4E8"
+        },
+        {
+          "address": "0x8016D930"
+        },
+        {
+          "address": "0x8016D9D4"
+        },
+        {
+          "address": "0x8016DF84"
+        },
+        {
+          "address": "0x8016E334"
+        },
+        {
+          "address": "0x8016E47C"
+        },
+        {
+          "address": "0x8016E9F4"
+        },
+        {
+          "address": "0x8016F1A8"
+        },
+        {
+          "address": "0x8016F700"
+        },
+        {
+          "address": "0x80170558"
+        },
+        {
+          "address": "0x801705FC"
+        },
+        {
+          "address": "0x8017092C"
+        },
+        {
+          "address": "0x80170F74"
+        },
+        {
+          "address": "0x8017162C"
+        },
+        {
+          "address": "0x801719B4"
+        },
+        {
+          "address": "0x80172AF8"
+        },
+        {
+          "address": "0x80172D10"
+        },
+        {
+          "address": "0x8017329C"
+        }
+      ]
+    },
+    {
+      "name": "sel_richter_saturn",
+      "file": "BIN/SELRIC2.BIN",
+      "base": "0x80180000",
+      "funcMap": "funcmaps/sel_richter_saturn.json",
+      "linearSweep": true,
+      "functions": [
+        {
+          "address": "0x801B7B38"
+        },
+        {
+          "address": "0x801BA574"
+        },
+        {
+          "address": "0x801BCE84"
+        },
+        {
+          "address": "0x801BCF48"
+        },
+        {
+          "address": "0x801BEF80"
+        },
+        {
+          "address": "0x801C2C30"
+        }
+      ]
+    },
+    {
+      "name": "bo6_richter_saturn",
+      "file": "BIN/BO6RIC2.BIN",
+      "base": "0x80180000",
+      "funcMap": "funcmaps/bo6_richter_saturn.json",
+      "linearSweep": true,
+      "functions": [
+        {
+          "address": "0x801A7880"
+        },
+        {
+          "address": "0x801A7948"
+        },
+        {
+          "address": "0x801A7B04"
+        },
+        {
+          "address": "0x801A86A0"
+        },
+        {
+          "address": "0x801A9964"
+        },
+        {
+          "address": "0x801A9AE8"
+        },
+        {
+          "address": "0x801A9ED4"
+        },
+        {
+          "address": "0x801AA208"
+        },
+        {
+          "address": "0x801AA224"
+        },
+        {
+          "address": "0x801AA464"
+        },
+        {
+          "address": "0x801AA760"
+        },
+        {
+          "address": "0x801AA868"
+        },
+        {
+          "address": "0x801AB9E4"
+        },
+        {
+          "address": "0x801AC8E4"
+        },
+        {
+          "address": "0x801ACA5C"
+        },
+        {
+          "address": "0x801ACC78"
+        },
+        {
+          "address": "0x801AF2EC"
+        },
+        {
+          "address": "0x801AFB9C"
+        },
+        {
+          "address": "0x801AFD3C"
+        },
+        {
+          "address": "0x801B05D4"
+        },
+        {
+          "address": "0x801B10A4"
+        },
+        {
+          "address": "0x801B11C0"
+        },
+        {
+          "address": "0x801B180C"
+        },
+        {
+          "address": "0x801B1B34"
+        },
+        {
+          "address": "0x801B1C24"
+        },
+        {
+          "address": "0x801B25C4"
+        },
+        {
+          "address": "0x801B3C88"
+        },
+        {
+          "address": "0x801B490C"
+        },
+        {
+          "address": "0x801B4CA0"
+        },
+        {
+          "address": "0x801B5150"
+        },
+        {
+          "address": "0x801B7458"
+        },
+        {
+          "address": "0x801B7460"
+        },
+        {
+          "address": "0x801BC050"
+        },
+        {
+          "address": "0x801BC384"
+        },
+        {
+          "address": "0x801BC55C"
+        },
+        {
+          "address": "0x801BC800"
+        },
+        {
+          "address": "0x801BCC8C"
+        },
+        {
+          "address": "0x801BCD7C"
+        },
+        {
+          "address": "0x801BCE94"
+        },
+        {
+          "address": "0x801BCF64"
+        },
+        {
+          "address": "0x801BD014"
+        },
+        {
+          "address": "0x801BD29C"
+        },
+        {
+          "address": "0x801BDA54"
+        },
+        {
+          "address": "0x801BDD20"
+        },
+        {
+          "address": "0x801BDE74"
+        },
+        {
+          "address": "0x801BF138"
+        },
+        {
+          "address": "0x801BF3DC"
+        },
+        {
+          "address": "0x801BFD90"
+        },
+        {
+          "address": "0x801C0644"
+        },
+        {
+          "address": "0x801C0D84"
+        },
+        {
+          "address": "0x801C172C"
+        },
+        {
+          "address": "0x801C1984"
+        },
+        {
+          "address": "0x801C1D44"
+        },
+        {
+          "address": "0x801C1E2C"
+        },
+        {
+          "address": "0x801C2E5C"
+        },
+        {
+          "address": "0x801C3024"
+        },
+        {
+          "address": "0x801C3120"
+        },
+        {
+          "address": "0x801C3128"
+        },
+        {
+          "address": "0x801C357C"
+        },
+        {
+          "address": "0x801C3C60"
+        },
+        {
+          "address": "0x801C4128"
+        },
+        {
+          "address": "0x801C4748"
+        },
+        {
+          "address": "0x801C4B9C"
+        },
+        {
+          "address": "0x801C5228"
+        },
+        {
+          "address": "0x801C538C"
+        },
+        {
+          "address": "0x801C5524"
+        },
+        {
+          "address": "0x801C588C"
+        },
+        {
+          "address": "0x801C5FA8"
+        },
+        {
+          "address": "0x801C6760"
+        },
+        {
+          "address": "0x801C700C"
+        },
+        {
+          "address": "0x801C783C"
+        },
+        {
+          "address": "0x801C7DA4"
+        },
+        {
+          "address": "0x801C82D4"
+        },
+        {
+          "address": "0x801C8988"
+        },
+        {
+          "address": "0x801C8B28"
+        },
+        {
+          "address": "0x801C8F2C"
+        },
+        {
+          "address": "0x801C8FB4"
+        },
+        {
+          "address": "0x801C9558"
+        },
+        {
+          "address": "0x801C98DC"
+        },
+        {
+          "address": "0x801C9A24"
+        },
+        {
+          "address": "0x801C9FD4"
+        },
+        {
+          "address": "0x801CA784"
+        },
+        {
+          "address": "0x801CACDC"
+        },
+        {
+          "address": "0x801CAF74"
+        },
+        {
+          "address": "0x801CB5BC"
+        },
+        {
+          "address": "0x801CBC78"
+        },
+        {
+          "address": "0x801CC000"
+        },
+        {
+          "address": "0x801CCF9C"
+        },
+        {
+          "address": "0x801CD1B4"
+        },
+        {
+          "address": "0x801CD718"
+        }
+      ]
+    },
+    {
+      "name": "cen_maria_psp",
+      "file": "BIN/CENP.BIN",
+      "base": "0x80180000",
+      "funcMap": "funcmaps/cen_maria_psp.json",
+      "linearSweep": true,
+      "functions": [
+        {
+          "address": "0x8018E228"
+        },
+        {
+          "address": "0x8018E308"
+        },
+        {
+          "address": "0x8018E4C4"
+        },
+        {
+          "address": "0x8018F4B8"
+        },
+        {
+          "address": "0x801906C4"
+        },
+        {
+          "address": "0x80190FF8"
+        },
+        {
+          "address": "0x801912F0"
+        },
+        {
+          "address": "0x801914BC"
+        },
+        {
+          "address": "0x801919F4"
+        },
+        {
+          "address": "0x80191AE0"
+        },
+        {
+          "address": "0x80191DF8"
+        },
+        {
+          "address": "0x801920F4"
+        },
+        {
+          "address": "0x8019225C"
+        },
+        {
+          "address": "0x801933DC"
+        },
+        {
+          "address": "0x801942DC"
+        },
+        {
+          "address": "0x80194454"
+        },
+        {
+          "address": "0x80194670"
+        },
+        {
+          "address": "0x80196CE4"
+        },
+        {
+          "address": "0x80197594"
+        },
+        {
+          "address": "0x80197734"
+        },
+        {
+          "address": "0x80197FCC"
+        },
+        {
+          "address": "0x80198A9C"
+        },
+        {
+          "address": "0x80198BC4"
+        },
+        {
+          "address": "0x80199210"
+        },
+        {
+          "address": "0x80199538"
+        },
+        {
+          "address": "0x80199628"
+        },
+        {
+          "address": "0x80199FC8"
+        },
+        {
+          "address": "0x8019B68C"
+        },
+        {
+          "address": "0x8019C310"
+        },
+        {
+          "address": "0x8019C6A4"
+        },
+        {
+          "address": "0x8019CB54"
+        },
+        {
+          "address": "0x8019F130"
+        },
+        {
+          "address": "0x8019F5EC"
+        },
+        {
+          "address": "0x8019F5FC"
+        },
+        {
+          "address": "0x8019F800"
+        },
+        {
+          "address": "0x8019FA70"
+        },
+        {
+          "address": "0x8019FF30"
+        },
+        {
+          "address": "0x801A084C"
+        },
+        {
+          "address": "0x801A116C"
+        },
+        {
+          "address": "0x801A1850"
+        },
+        {
+          "address": "0x801A1C58"
+        },
+        {
+          "address": "0x801A2640"
+        },
+        {
+          "address": "0x801A2EE0"
+        },
+        {
+          "address": "0x801A390C"
+        },
+        {
+          "address": "0x801A3CA0"
+        },
+        {
+          "address": "0x801A3CA8"
+        },
+        {
+          "address": "0x801A525C"
+        },
+        {
+          "address": "0x801A5334"
+        },
+        {
+          "address": "0x801A5920"
+        },
+        {
+          "address": "0x801A6440"
+        },
+        {
+          "address": "0x801A66CC"
+        },
+        {
+          "address": "0x801A698C"
+        },
+        {
+          "address": "0x801A8D70"
+        },
+        {
+          "address": "0x801A9040"
+        },
+        {
+          "address": "0x801A974C"
+        },
+        {
+          "address": "0x801AF30C"
+        },
+        {
+          "address": "0x801AF844"
+        },
+        {
+          "address": "0x801AFB8C"
+        },
+        {
+          "address": "0x801B0074"
+        },
+        {
+          "address": "0x801B0204"
+        },
+        {
+          "address": "0x801B0778"
+        }
+      ],
+      "size": 509952
+    }
+  ],
+  "stubs": [],
+  "ignored": [],
+  "patches": [
+    {
+      "overlay": "dra",
+      "function": "SetStageDisplayBuffer",
+      "mode": "pre",
+      "target": "Recompiled.DisplayModeHooks.PreStageDisplayBuffer"
+    },
+    {
+      "overlay": "dra",
+      "function": "SetMenuDisplayBuffer",
+      "mode": "pre",
+      "target": "Recompiled.DisplayModeHooks.PreMenuDisplayBuffer"
+    },
+    {
+      "overlay": "dra",
+      "function": "SetCgiDisplayBuffer",
+      "mode": "pre",
+      "target": "Recompiled.DisplayModeHooks.PreCgiDisplayBuffer"
+    },
+    {
+      "overlay": "sel",
+      "function": "func_801B19F4",
+      "mode": "pre",
+      "target": "Recompiled.DisplayModeHooks.PreStageDisplayBuffer"
+    },
+    {
+      "overlay": "sel",
+      "function": "SetTitleDisplayBuffer",
+      "mode": "pre",
+      "target": "Recompiled.DisplayModeHooks.PreTitleDisplayBuffer"
+    },
+    {
+      "overlay": "sel",
+      "function": "SetTitleDisplayBuffer256",
+      "mode": "pre",
+      "target": "Recompiled.DisplayModeHooks.PreTitleDisplayBuffer"
+    },
+    {
+      "overlay": "dra",
+      "function": "func_800E34DC",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.ConfigStageClipWide"
+    },
+    {
+      "overlay": "dra",
+      "function": "RenderTilemap",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.RenderTilemapWideHook"
+    },
+    {
+      "overlay": "sel",
+      "function": "func_801B195C",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.ConfigStageClipWide"
+    },
+    {
+      "overlay": "dra",
+      "function": "InitFade",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.InitFadeWide"
+    },
+    {
+      "overlay": "dra",
+      "function": "SetFadeWidth",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.SetFadeWidthWide"
+    },
+    {
+      "overlay": "dra",
+      "function": "SetFadeMode",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.RefreshFade"
+    },
+    {
+      "overlay": "st0",
+      "function": "func_801AA218",
+      "mode": "post",
+      "target": "Recompiled.WidescreenPatch.MarkCameraPan"
+    },
+    {
+      "overlay": "dra",
+      "function": "LoadRoomLayer",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.MarkRoomLoaded"
+    },
+    {
+      "overlay": "cen",
+      "function": "InitRoomEntities",
+      "mode": "post",
+      "target": "Recompiled.WidescreenPatch.PostInitRoomEntities"
+    },
+    {
+      "overlay": "chi",
+      "function": "InitRoomEntities",
+      "mode": "post",
+      "target": "Recompiled.WidescreenPatch.PostInitRoomEntities"
+    },
+    {
+      "overlay": "dai",
+      "function": "InitRoomEntities",
+      "mode": "post",
+      "target": "Recompiled.WidescreenPatch.PostInitRoomEntities"
+    },
+    {
+      "overlay": "nz0",
+      "function": "InitRoomEntities",
+      "mode": "post",
+      "target": "Recompiled.WidescreenPatch.PostInitRoomEntities"
+    },
+    {
+      "overlay": "lib",
+      "function": "InitRoomEntities",
+      "mode": "post",
+      "target": "Recompiled.WidescreenPatch.PostInitRoomEntities"
+    },
+    {
+      "overlay": "mad",
+      "function": "InitRoomEntities",
+      "mode": "post",
+      "target": "Recompiled.WidescreenPatch.PostInitRoomEntities"
+    },
+    {
+      "overlay": "are",
+      "function": "InitRoomEntities",
+      "mode": "post",
+      "target": "Recompiled.WidescreenPatch.PostInitRoomEntities"
+    },
+    {
+      "overlay": "dre",
+      "function": "InitRoomEntities",
+      "mode": "post",
+      "target": "Recompiled.WidescreenPatch.PostInitRoomEntities"
+    },
+    {
+      "overlay": "rare",
+      "function": "InitRoomEntities",
+      "mode": "post",
+      "target": "Recompiled.WidescreenPatch.PostInitRoomEntities"
+    },
+    {
+      "overlay": "rcat",
+      "function": "InitRoomEntities",
+      "mode": "post",
+      "target": "Recompiled.WidescreenPatch.PostInitRoomEntities"
+    },
+    {
+      "overlay": "rtop",
+      "function": "InitRoomEntities",
+      "mode": "post",
+      "target": "Recompiled.WidescreenPatch.PostInitRoomEntities"
+    },
+    {
+      "overlay": "bo4",
+      "function": "InitRoomEntities",
+      "mode": "post",
+      "target": "Recompiled.WidescreenPatch.PostInitRoomEntities"
+    },
+    {
+      "overlay": "bo6",
+      "function": "InitRoomEntities",
+      "mode": "post",
+      "target": "Recompiled.WidescreenPatch.PostInitRoomEntities"
+    },
+    {
+      "overlay": "mar",
+      "function": "InitRoomEntities",
+      "mode": "post",
+      "target": "Recompiled.WidescreenPatch.PostInitRoomEntities"
+    },
+    {
+      "overlay": "rbo0",
+      "function": "InitRoomEntities",
+      "mode": "post",
+      "target": "Recompiled.WidescreenPatch.PostInitRoomEntities"
+    },
+    {
+      "overlay": "rbo3",
+      "function": "InitRoomEntities",
+      "mode": "post",
+      "target": "Recompiled.WidescreenPatch.PostInitRoomEntities"
+    },
+    {
+      "overlay": "rbo5",
+      "function": "InitRoomEntities",
+      "mode": "post",
+      "target": "Recompiled.WidescreenPatch.PostInitRoomEntities"
+    },
+    {
+      "overlay": "st0",
+      "function": "InitRoomEntities",
+      "mode": "post",
+      "target": "Recompiled.WidescreenPatch.PostInitRoomEntities"
+    },
+    {
+      "overlay": "no1",
+      "function": "InitRoomEntities",
+      "mode": "post",
+      "target": "Recompiled.WidescreenPatch.PostInitRoomEntities"
+    },
+    {
+      "overlay": "no2",
+      "function": "InitRoomEntities",
+      "mode": "post",
+      "target": "Recompiled.WidescreenPatch.PostInitRoomEntities"
+    },
+    {
+      "overlay": "rnz0",
+      "function": "InitRoomEntities",
+      "mode": "post",
+      "target": "Recompiled.WidescreenPatch.PostInitRoomEntities"
+    },
+    {
+      "overlay": "cen",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "chi",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "dai",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "wrp",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "top",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "cat",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "nz0",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "nz1",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "np3",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "lib",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "mad",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "are",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "dre",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "rare",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "rcat",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "rwrp",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "rtop",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "bo4",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "bo6",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "mar",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "rbo0",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "rbo3",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "rbo5",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "st0",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "no0",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "no1",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "no2",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "no3",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "no4",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "rnz0",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "cen",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "chi",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "dai",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "wrp",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "top",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "cat",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "nz0",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "nz1",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "np3",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "lib",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "mad",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "are",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "dre",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "rare",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "rcat",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "rwrp",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "rtop",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "bo4",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "bo6",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "mar",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "rbo0",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "rbo3",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "rbo5",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "st0",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "no0",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "no1",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "no2",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "no3",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "no4",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "rnz0",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "cen",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "chi",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "dai",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "wrp",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "top",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "cat",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "nz0",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "nz1",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "np3",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "lib",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "mad",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "are",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "dre",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "rare",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "rcat",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "rwrp",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "rtop",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "bo4",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "bo6",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "mar",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "rbo0",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "rbo3",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "rbo5",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "st0",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "no0",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "no1",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "no2",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "no3",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "no4",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "rnz0",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "bo1",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "dra",
+      "function": "func_800F0CD8",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CamColWide"
+    },
+    {
+      "overlay": "dra",
+      "function": "DrawHud",
+      "mode": "post",
+      "target": "Recompiled.WidescreenPatch.UltimateHudInit"
+    },
+    {
+      "overlay": "dra",
+      "function": "DrawHudSubweapon",
+      "mode": "post",
+      "target": "Recompiled.WidescreenPatch.UltimateHudUpdate"
+    },
+    {
+      "overlay": "dra",
+      "address": "0x800FE7BC",
+      "mode": "post",
+      "target": "Recompiled.WidescreenPatch.UltimateRichterHudInit"
+    },
+    {
+      "overlay": "dra",
+      "address": "0x800FF2DC",
+      "mode": "post",
+      "target": "Recompiled.WidescreenPatch.UltimateRichterHudUpdate"
+    },
+    {
+      "overlay": "sel_richter_saturn",
+      "function": "func_801B19F4",
+      "mode": "pre",
+      "target": "Recompiled.DisplayModeHooks.PreStageDisplayBuffer"
+    },
+    {
+      "overlay": "sel_richter_saturn",
+      "function": "SetTitleDisplayBuffer",
+      "mode": "pre",
+      "target": "Recompiled.DisplayModeHooks.PreTitleDisplayBuffer"
+    },
+    {
+      "overlay": "sel_richter_saturn",
+      "function": "SetTitleDisplayBuffer256",
+      "mode": "pre",
+      "target": "Recompiled.DisplayModeHooks.PreTitleDisplayBuffer"
+    },
+    {
+      "overlay": "sel_richter_saturn",
+      "function": "func_801B195C",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.ConfigStageClipWide"
+    },
+    {
+      "overlay": "bo6_richter_saturn",
+      "function": "InitRoomEntities",
+      "mode": "post",
+      "target": "Recompiled.WidescreenPatch.PostInitRoomEntities"
+    },
+    {
+      "overlay": "bo6_richter_saturn",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "bo6_richter_saturn",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "bo6_richter_saturn",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    },
+    {
+      "overlay": "cen_maria_psp",
+      "function": "InitRoomEntities",
+      "mode": "post",
+      "target": "Recompiled.WidescreenPatch.PostInitRoomEntities"
+    },
+    {
+      "overlay": "cen_maria_psp",
+      "function": "UpdateRoomPosition",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.UpdateRoomPositionWide"
+    },
+    {
+      "overlay": "cen_maria_psp",
+      "function": "CreateEntityWhenInHorizontalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInHorizontalRangeWide"
+    },
+    {
+      "overlay": "cen_maria_psp",
+      "function": "CreateEntityWhenInVerticalRange",
+      "mode": "pre",
+      "target": "Recompiled.WidescreenPatch.CreateEntityWhenInVerticalRangeWide"
+    }
+  ]
+}
