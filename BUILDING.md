@@ -5,6 +5,7 @@ Requirements: Git, Python 3.11+, .NET 10 SDK with the Android workload, Android 
 ```sh
 git clone https://github.com/pettersdark/SymphonyRecomp-Ultimate.git
 cd SymphonyRecomp-Ultimate
+python -m zipfile -e BuildInputs.zip .
 git clone https://github.com/sergiomanzur/RecompOne.git RecompOne
 git -C RecompOne checkout 275a1271415f97924dcfd38a721bc7407f6baa9a
 dotnet workload install android
@@ -13,6 +14,8 @@ git -C RecompOne apply ../local-patches/recompone-ultimate.patch
 ```
 
 Apply the patch once on a clean pinned runtime checkout. It contains the touch/controller, rendering, resolution, background-audio and Android runtime changes used by this adaptation. Keep the pinned runtime revision unless you deliberately port the patch to another revision. The runtime is fetched separately rather than vendored in this repository.
+
+`BuildInputs.zip` contains the editable function-map JSON files, decorative borders, language metadata and Android icons in their correct folders. Extract it before generating or building. It contains no game disc or generated game code. The source download archive also includes these inputs unpacked.
 
 Place your own exact `SOTN Ultimate (PS1 Version) v1.1.bin` in `disc/`. The supplied CUE references that filename. Verify its size and MD5 against `disc/README.md`. Only this mod disc is needed; the original retail disc is not required for this prepared configuration.
 
