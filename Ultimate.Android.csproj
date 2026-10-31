@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0-android</TargetFramework>
+    <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
+    <OutputType>Exe</OutputType>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <DefaultItemExcludes>$(DefaultItemExcludes);RecompOne/**;jdk/**;diagnostics/**</DefaultItemExcludes>
+    <UseFlagsAttributeForFlags>true</UseFlagsAttributeForFlags>
+    <ApplicationId>com.pettersdark.symphonyrecomp.ultimate</ApplicationId>
+    <ApplicationVersion>6</ApplicationVersion>
+    <ApplicationDisplayVersion>0.6-test</ApplicationDisplayVersion>
+    <AndroidManifest>Prototype/AndroidManifest.xml</AndroidManifest>
+    <AndroidPackageFormat>apk</AndroidPackageFormat>
+    <RunAOTCompilation>false</RunAOTCompilation>
+    <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
+    <RuntimeIdentifier>android-x64</RuntimeIdentifier>
+    <NoWarn>$(NoWarn);0162</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="generated/**/*.cs" />
+    <Compile Include="Prototype/**/*.cs" />
+    <Compile Include="Android/TouchOverlayView.cs" />
+    <Compile Include="Android/BorderOverlayView.cs" />
+    <ProjectReference Include="RecompOne/RecompOne.Runtime/RecompOne.Runtime.csproj" />
+    <AndroidAsset Include="assets/languages.json" />
+    <AndroidAsset Include="assets/borders/*.png" />
+    <AndroidResource Include="Android/Resources/**/*.png" />
+  </ItemGroup>
+</Project>
